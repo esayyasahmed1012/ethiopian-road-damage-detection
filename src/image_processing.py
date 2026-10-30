@@ -41,41 +41,24 @@ def convert_to_grayscale(image: np.ndarray) -> np.ndarray:
 
     if image.ndim != 3 or image.shape[2] != 3:
         raise ValueError(
-            "expected a grayscale image or a three-channel BGR image."
+            "xpected a grayscale image or a three-channel BGR image."
         )
 
     return cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-
-def reduce_noise(
-    grayscale_image: np.ndarray,
-    kernel_size: int = 5,
-) -> np.ndarray:
-    """Reduce image noise using Gaussian blur."""
-
+def reduce_noise(grayscale_image: np.ndarray, kernel_size: int = 5,) -> np.ndarray:
+    """reduce image noise using Gaussian blur."""
     if grayscale_image is None or grayscale_image.size == 0:
         raise ValueError("Input image cannot be empty.")
-
     if grayscale_image.ndim != 2:
         raise ValueError("Expected a grayscale image.")
-
     if kernel_size <= 0 or kernel_size % 2 == 0:
         raise ValueError(
-            "kernel_size must be a positive odd integer."
+            "kernel_size must be a positive odd number."
         )
-
-    return cv2.GaussianBlur(
-        grayscale_image,
-        (kernel_size, kernel_size),
-        0,
+    return cv2.GaussianBlur( grayscale_image, (kernel_size, kernel_size), 0,
     )
-
-
-def detect_edges(
-    grayscale_image: np.ndarray,
-    lower_threshold: int = 50,
-    upper_threshold: int = 150,
-) -> np.ndarray:
+def detect_edges(grayscale_image: np.ndarray, lower_threshold: int = 50, upper_threshold: int = 150,) -> np.ndarray:
     """Detect edges using the Canny edge detector."""
 
     if grayscale_image is None or grayscale_image.size == 0:
