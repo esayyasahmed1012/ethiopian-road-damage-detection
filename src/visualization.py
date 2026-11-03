@@ -12,9 +12,8 @@ def display_image_results(results: dict) -> None:
         ("Original Image", results["original"], "BGR"),
         ("Grayscale Image", results["grayscale"], "GRAY"),
         ("Blurred Image", results["blurred"], "GRAY"),
-        ("Edge Image", results["edges"], "GRAY"),
-    ]
-
+        ("Edge Image", results["edges"], "GRAY"), 
+    ] 
     for ax, (title, image, color_format) in zip(
         axes.flat, images
     ):
