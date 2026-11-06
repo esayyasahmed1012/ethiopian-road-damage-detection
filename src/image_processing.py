@@ -56,17 +56,14 @@ def reduce_noise(grayscale_image: np.ndarray, kernel_size: int = 5,) -> np.ndarr
         raise ValueError(
             "kernel_size must be a positive odd number."
         )
-    return cv2.GaussianBlur( grayscale_image, (kernel_size, kernel_size), 0,
-    )
+    return cv2.GaussianBlur( grayscale_image, (kernel_size, kernel_size), 0,)
 def detect_edges(grayscale_image: np.ndarray, lower_threshold: int = 50, upper_threshold: int = 150,) -> np.ndarray:
-    """Detect edges using the Canny edge detector."""
+    """detect edges using the Canny edge detector."""
 
     if grayscale_image is None or grayscale_image.size == 0:
         raise ValueError("Input image cannot be empty.")
-
     if grayscale_image.ndim != 2:
         raise ValueError("Expected a grayscale image.")
-
     if not (
         0 <= lower_threshold < upper_threshold <= 255
     ):
@@ -74,7 +71,6 @@ def detect_edges(grayscale_image: np.ndarray, lower_threshold: int = 50, upper_t
             "Thresholds must satisfy "
             "0 <= lower_threshold < upper_threshold <= 255."
         )
-
     return cv2.Canny(
         grayscale_image,
         lower_threshold,
