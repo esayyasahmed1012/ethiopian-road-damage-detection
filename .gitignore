@@ -22,3 +22,7 @@ data/processed/
 *.onnx
 .DS_Store
 Thumbs.db
+# Dataset files
+data/raw/
+data/processed/
+data/samples/
